@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>RANDOM JOKE GENERATOR</h1>
+    <p>This is a simple web application and is the first project in the MERN Stack Development Program</p>
+    <button onclick="fetchJoke()">Generate</button>
+    <p id="jokeDisplay"></p>
+
+    <script>
+        async function fetchJoke() {
+            try 
+            {
+                var response = await fetch("https://icanhazdadjoke.com", 
+                {
+                    headers: 
+                    {
+                        "Accept": "application/json"
+                    }
+                });
+                var data = await response.json();
+                document.getElementById("jokeDisplay").innerText = data.joke;
+            } 
+            catch (error) 
+            {
+                console.log("Error fetching joke: " + error);
+            }
+        }
+    </script>
+</body>
+</html>
